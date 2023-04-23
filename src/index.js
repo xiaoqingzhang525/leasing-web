@@ -1,13 +1,19 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { store } from './store/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
+
+if (process.env.NODE_ENV === 'development') {
+  const { worker } = require('./mocks/browser');
+  worker.start();
+}
+console.log(process.env.NODE_ENV, '-process.env.NODE_ENV');
 
 root.render(
   <React.StrictMode>
