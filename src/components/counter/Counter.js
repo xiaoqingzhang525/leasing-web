@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { counterFetch } from '../../integrations/counterFetch';
 import {
   decrement,
   increment,
   incrementByAmount,
-  incrementAsync,
-} from './reducers/counterReducer';
-import styles from './styles/Counter.module.css';
+} from '../../reducers/counterReducer';
+import styles from '../../styles/counter.module.css';
 
 const Counter = (props) => {
   const { value, increment, decrement, incrementByAmount } = props;
@@ -15,6 +15,11 @@ const Counter = (props) => {
   const [incrementAmount, setIncrementAmount] = useState('2');
 
   const incrementValue = Number(incrementAmount) || 0;
+
+  const getAmount = async () => {
+    const res = await counterFetch();
+    incrementByAmount(res.amount);
+  };
 
   const incrementIfOdd = (amount) => {
     if (value % 2 === 1) {
@@ -54,10 +59,7 @@ const Counter = (props) => {
         >
           Add Amount
         </button>
-        <button
-          className={styles.asyncButton}
-          onClick={() => incrementAsync(incrementValue)}
-        >
+        <button className={styles.asyncButton} onClick={() => getAmount()}>
           Add Async
         </button>
         <button
