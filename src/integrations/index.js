@@ -1,5 +1,5 @@
 export const fetchRequest = async (url = '', data = {}, type = 'GET') => {
-  const baseUrl = 'http://localhost:3001/';
+  const baseUrl = 'http://localhost:3001';
   type = type.toUpperCase();
   url = baseUrl + url;
 
@@ -31,9 +31,12 @@ export const fetchRequest = async (url = '', data = {}, type = 'GET') => {
   }
   try {
     const response = await fetch(url, requestConfig);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const responseJson = await response.json();
     return responseJson;
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error.message);
   }
 };

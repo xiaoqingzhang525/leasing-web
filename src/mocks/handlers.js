@@ -1,6 +1,6 @@
 // src/mocks/handlers.js
 import { rest } from 'msw';
-import CounterRes from './data/counter.json';
+import housingData from './data/housingInfos.json';
 
 export const handlers = [
   // rest.post('/'counter/fetchCount'', (req, res, ctx) => {
@@ -13,10 +13,10 @@ export const handlers = [
   //   );
   // }),
 
-  rest.get(
-    'http://localhost:3001/counter/fetchCount',
-    async (req, res, ctx) => {
-      return await res(ctx.status(200), ctx.json(CounterRes));
-    }
-  ),
+  rest.get('http://localhost:3001/housingInfos', async (req, res, ctx) => {
+    return await res(ctx.status(200), ctx.json({ data: housingData }));
+  }),
+  // rest.get('http://localhost:3001/housingInfos', (req, res, ctx) => {
+  //   return res(ctx.status(500));
+  // }),
 ];

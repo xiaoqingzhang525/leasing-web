@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "address": "123 Main Street",
+    "city": "New York",
+    "state": "NY",
+    "zipcode": "10001",
+    "price": 2000,
+    "bedrooms": 2,
+    "bathrooms": 1.5
+  },
+  {
+    "id": 2,
+    "address": "456 Elm Street",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zipcode": "90001",
+    "price": 3000,
+    "bedrooms": 3,
+    "bathrooms": 2
+  },
+  {
+    "id": 3,
+    "address": "789 Oak Street",
+    "city": "Chicago",
+    "state": "IL",
+    "zipcode": "60601",
+    "price": 2500,
+    "bedrooms": 1,
+    "bathrooms": 1
+  }
+]

@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import persistedCounterReducer from './reducers/counterReducer';
+import persistedHousingReducer from './reducers/housingReducer';
 
 const rootReducers = combineReducers({
-  counter: persistedCounterReducer,
+  housingReducer: persistedHousingReducer,
 });
 
 export default rootReducers;
